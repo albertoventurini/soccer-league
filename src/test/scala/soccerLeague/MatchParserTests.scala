@@ -5,7 +5,7 @@ import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class MatchParserTest extends FunSuite {
+class MatchParserTests extends FunSuite {
 
   test("parse_emptyInput_returnsEmptyListOfResults") {
 
@@ -46,6 +46,17 @@ Lions 1, FC Awesome 1
     assert(matchResults(1).score2 === 1)
     assert(matchResults(1).team1 === "Lions")
     assert(matchResults(1).team2 === "FC Awesome")
+  }
+
+  test("parse_teamWithNumericCharacterInName_isParsedCorrectly") {
+
+    val matchResults = MatchParser.parse(List("123 team 1, 1 team 2 10"))
+
+    assert(matchResults.head.score1 === 1)
+    assert(matchResults.head.score2 === 10)
+    assert(matchResults.head.team1 === "123 team")
+    assert(matchResults.head.team2 === "1 team 2")
+
   }
 
 }

@@ -6,7 +6,7 @@ import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class RankerTest extends FunSuite {
+class RankerTests extends FunSuite {
 
   private val winScore = 3
   private val drawScore = 1

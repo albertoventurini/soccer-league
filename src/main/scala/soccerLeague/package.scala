@@ -8,9 +8,11 @@ package object soccerLeague {
 
   type Championship = Seq[MatchResult]
 
-  class TeamPoints(val team: String, val points: Int)
+  class TeamWithPoints(val team: String, val points: Int)
 
   // LeagueRank is a list of teams with their respective points
-  type LeagueRank = Seq[TeamPoints]
+  type LeagueRank = Seq[TeamWithPoints]
+
+  implicit def leagueRankToString(leagueRank: LeagueRank): String = ???
 
 }
