@@ -1,12 +1,16 @@
-import scala.collection.immutable.SortedMap
-
+// Contains common type and class definitions
 package object soccerLeague {
 
-  type Championship = List[MatchResult]
+  // LeagueRules contains common rules for the league, e.g. how many points to assign for each match
+  class LeagueRules(val winScore: Int, val drawScore: Int, val lossScore: Int)
+
+  class MatchResult(val team1: String, val score1: Int, val team2: String, val score2: Int)
+
+  type Championship = Seq[MatchResult]
 
   class TeamPoints(val team: String, val points: Int)
 
-  // LeagueRank is a list of teams and their respective points
+  // LeagueRank is a list of teams with their respective points
   type LeagueRank = Seq[TeamPoints]
 
 }

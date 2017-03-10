@@ -84,7 +84,6 @@ Lions 4, Grouches 0
     assert(rankResult(4).team === "Grouches")
     assert(rankResult(4).points === lossScore)
 
-
   }
 
 }

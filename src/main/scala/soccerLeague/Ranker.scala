@@ -1,7 +1,7 @@
 package soccerLeague
 
-import scala.collection.immutable.SortedMap
-
+// A Ranker is initialized with rules, e.g. how many points to assign for each match.
+// It exposes a 'rank' method that, given a Championship, returns the calculated rank.
 class Ranker(rules: LeagueRules) {
 
   def rank(championship: Championship): LeagueRank = {
@@ -25,6 +25,5 @@ class Ranker(rules: LeagueRules) {
     // sort by score, in reverse order (i.e. the team with most points is first)
     rank.toSeq.map { case (t, s) => new TeamPoints(t, s) }.sortBy(- _.points)
   }
-
 
 }
