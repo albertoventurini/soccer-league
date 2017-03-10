@@ -86,4 +86,21 @@ Lions 4, Grouches 0
 
   }
 
+  test("rank_teamWithSameScore_shouldBeSortedInAlphabeticalOrder") {
+    /*
+    Setup matches to yield the following ranking:
+    1. CC, 3 pts
+    2. AA, 1 pt
+    3. BB, 1 pt
+     */
+    val match1 = new MatchResult("BB", 3, "AA", 3)
+    val match2 = new MatchResult("CC", 1, "AA", 0)
+
+    val championship = List(match1, match2)
+    val rankResult = ranker.rank(championship)
+
+    assert(rankResult(1).team === "AA")
+    assert(rankResult(2).team === "BB")
+  }
+
 }

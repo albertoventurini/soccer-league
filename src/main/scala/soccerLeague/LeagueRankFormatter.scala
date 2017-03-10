@@ -1,25 +1,23 @@
 package soccerLeague
 
-//
 object LeagueRankFormatter {
 
+  // Formats a LeagueRank into a String
   def format(leagueRank: LeagueRank): String = {
 
     var index = 0
+    var previousRank: Option[Int] = None
+    var previousPoints: Option[Int] = None
 
-    leagueRank.map(teamWithPoints => {
-      index += 1
-      formatTeamPoints(index, teamWithPoints)
-    }).mkString("\n")
+    leagueRank.map { case TeamWithPoints(team, points) => {
+        index += 1
+        val rank = if(previousPoints.isDefined && points == previousPoints.get) previousRank.get else index
+        previousRank = Some(rank)
+        previousPoints = Some(points)
+        val pointsSuffix = if(points == 1) "pt" else "pts"
+        s"$rank. $team, $points $pointsSuffix"
+      }
+    }.mkString("\n")
 
   }
-
-  private def formatTeamPoints(index: Int, teamWithPoints: TeamWithPoints): String = {
-    val team = teamWithPoints.team
-    val points = teamWithPoints.points
-    val pointsSuffix = if(points == 1) "pt" else "pts"
-
-    s"$index. $team, $points $pointsSuffix"
-  }
-
 }

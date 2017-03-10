@@ -22,8 +22,11 @@ class Ranker(rules: LeagueRules) {
       prevRank + (m.team1 -> newPoints1) + (m.team2 -> newPoints2)
     })
 
-    // sort by score, in reverse order (i.e. the team with most points is first)
-    rank.toSeq.map { case (t, s) => new TeamWithPoints(t, s) }.sortBy(- _.points)
+    // Sort by score, in reverse order (i.e. the team with most points is first)
+    // Teams that have the same score are sorted in alphabetical order
+    rank.toSeq
+      .map { case (t, s) => new TeamWithPoints(t, s) }
+      .sortBy { case TeamWithPoints(team, points) => (-points, team) }
   }
 
 }
