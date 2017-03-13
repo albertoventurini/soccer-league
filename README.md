@@ -1,5 +1,5 @@
-# soccer-league
-Generates soccer league ranking from a set of soccer matches
+# Soccer League
+Generates soccer league ranking from a set of soccer matches.
 
 ## Usage
 
