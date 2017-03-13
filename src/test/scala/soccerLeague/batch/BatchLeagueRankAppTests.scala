@@ -1,11 +1,11 @@
-package soccerLeague
+package soccerLeague.batch
 
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class LeagueRankAppTests extends FunSuite {
+class BatchLeagueRankAppTests extends FunSuite {
 
   test("LeagueRankApp_shouldProduceExpectedOutput") {
     val input = """Lions 3, Snakes 3
@@ -20,7 +20,8 @@ class LeagueRankAppTests extends FunSuite {
                            |3. Snakes, 1 pt
                            |5. Grouches, 0 pts""".stripMargin
 
-    val actualOutput = LeagueRankApp(input.split("\n"))
+    val leagueRankApp = new BatchLeagueRankApp
+    val actualOutput = leagueRankApp(input.split("\n"))
 
     println(expectedOutput)
     println(actualOutput)

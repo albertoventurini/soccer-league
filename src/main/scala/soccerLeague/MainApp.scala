@@ -1,5 +1,7 @@
 package soccerLeague
 
+import soccerLeague.batch.BatchLeagueRankApp
+
 object MainApp {
 
   def main(args: Array[String]): Unit = {
@@ -7,9 +9,10 @@ object MainApp {
     val lines = io.Source.stdin.getLines().toList
       .filterNot(_.isEmpty) // Remove empty lines (e.g. at the end of the file)
 
-    val leagueRank = LeagueRankApp(lines)
+    val leagueRankApp = new BatchLeagueRankApp
+    val rank = leagueRankApp(lines)
 
-    println(leagueRank)
+    println(rank)
   }
 
 }

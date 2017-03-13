@@ -1,4 +1,4 @@
-package soccerLeague
+package soccerLeague.common
 
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite

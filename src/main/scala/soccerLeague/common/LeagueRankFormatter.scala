@@ -1,9 +1,9 @@
-package soccerLeague
+package soccerLeague.common
 
 object LeagueRankFormatter {
 
   // Formats a LeagueRank into a String
-  def format(leagueRank: LeagueRank): String = {
+  def format(leagueRank: Seq[TeamWithPoints]): String = {
 
     var index = 0
     var previousRank: Option[Int] = None

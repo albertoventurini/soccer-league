@@ -1,10 +1,12 @@
-package soccerLeague
+package soccerLeague.batch
+
+import soccerLeague.common.{LeagueRules, MatchResult, TeamWithPoints}
 
 // A Ranker is initialized with rules, e.g. how many points to assign for each match.
 // It exposes a 'rank' method that, given a Championship, returns the calculated rank.
 class Ranker(rules: LeagueRules) {
 
-  def rank(championship: Championship): LeagueRank = {
+  def rank(championship: Seq[MatchResult]): Seq[TeamWithPoints] = {
 
     def calcDeltaPoints(score1: Int, score2: Int): Int = {
       if(score1 == score2) rules.drawScore

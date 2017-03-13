@@ -1,10 +1,10 @@
-package soccerLeague
+package soccerLeague.common
 
 object MatchParser {
 
   def parse(lines: Seq[String]): Seq[MatchResult] = lines.map(parseLine)
 
-  private def parseLine(line: String): MatchResult = {
+  def parseLine(line: String): MatchResult = {
     val teamsWithScores = line.split(',').map(_.trim)
 
     // Regex to extract the team name and score

@@ -1,6 +1,8 @@
-package soccerLeague
+package soccerLeague.batch
 
-object LeagueRankApp {
+import soccerLeague.common.{LeagueRankApp, LeagueRankFormatter, LeagueRules, MatchParser}
+
+class BatchLeagueRankApp extends LeagueRankApp {
 
   def apply(lines: Seq[String]): String = {
     val matchResults = MatchParser.parse(lines)

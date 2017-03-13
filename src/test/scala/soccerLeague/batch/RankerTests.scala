@@ -1,9 +1,9 @@
-package soccerLeague
+package soccerLeague.batch
 
-import org.junit.Before
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
+import soccerLeague.common.{LeagueRules, MatchResult}
 
 @RunWith(classOf[JUnitRunner])
 class RankerTests extends FunSuite {
