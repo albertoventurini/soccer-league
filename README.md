@@ -3,7 +3,7 @@ Generates soccer league ranking from a set of soccer matches
 
 ## Usage
 
-The application uses `sbt` and the usual build targets are expected to work.
+The application is written in Scala and has been tested with Scala 2.11.6. It uses `sbt` and the usual build targets are expected to work.
 
 In order to compile, use `sbt compile`.
 
