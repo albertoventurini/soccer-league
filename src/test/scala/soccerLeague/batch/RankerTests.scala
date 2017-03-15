@@ -12,7 +12,7 @@ class RankerTests extends FunSuite {
   private val drawScore = 1
   private val lossScore = 0
   private val rules = new LeagueRules(winScore, drawScore, lossScore)
-  private val ranker = new Ranker(rules)
+  private val ranker = new BatchRanker(rules)
 
   // This is just to get TDD bootstrapped (ensures we have an implementation of the rank method)
   test("rank_emptyChampionship_shouldProduceEmptyRank") {

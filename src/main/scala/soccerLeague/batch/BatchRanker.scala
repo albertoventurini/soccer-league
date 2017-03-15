@@ -4,7 +4,7 @@ import soccerLeague.common.{LeagueRules, MatchResult, TeamWithPoints}
 
 // A Ranker is initialized with rules, e.g. how many points to assign for each match.
 // It exposes a 'rank' method that, given a Championship, returns the calculated rank.
-class Ranker(rules: LeagueRules) {
+class BatchRanker(rules: LeagueRules) {
 
   def rank(championship: Seq[MatchResult]): Seq[TeamWithPoints] = {
 
