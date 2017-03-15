@@ -15,6 +15,9 @@ class RankerActor(rules: LeagueRules) extends Actor {
       updateRank(MatchResult(team1, score1, team2, score2))
       sender ! rank
     }
+    case Message("getRank") => {
+      sender ! rank
+    }
   }
 
   private def updateRank(matchRes: MatchResult): Unit = {

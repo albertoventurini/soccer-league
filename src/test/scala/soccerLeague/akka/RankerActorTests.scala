@@ -1,19 +1,16 @@
 package soccerLeague.akka
 
 import akka.actor.{ActorSystem, Props}
-import akka.pattern.Patterns
+import akka.pattern.ask
 import akka.testkit.TestActorRef
 import akka.util.Timeout
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 import soccerLeague.common.{LeagueRules, MatchResult, TeamWithPoints}
-import sun.management.counter.Units
-import akka.pattern.ask
 
-import scala.concurrent.duration._
 import scala.concurrent.Await
-import scala.concurrent.Future
+import scala.concurrent.duration._
 
 @RunWith(classOf[JUnitRunner])
 class RankerActorTests extends FunSuite {
@@ -27,8 +24,9 @@ class RankerActorTests extends FunSuite {
 
   test("rank_oneMatchWithVictory_shouldProduceCorrectRank") {
     new RankerActorTestsHelper {
+      rankerRef ! new MatchResult("team1", 0, "team2", 1)
       implicit val timeout = Timeout(5 seconds)
-      val future = rankerRef ? new MatchResult("team1", 0, "team2", 1)
+      val future = rankerRef ? new Message("getRank")
       val result = Await.result(future, timeout.duration).asInstanceOf[Seq[TeamWithPoints]]
       assert(result(0).team === "team2")
       assert(result(0).points === 3)
